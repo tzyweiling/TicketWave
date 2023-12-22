@@ -1,24 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect } from "react";
+import { useLocation, Routes, Route } from "react-router-dom";
+import Payment from "./components/Payment";
+import PaymentSuccess from "./components/PaymentSuccess";
 
 function App() {
+  const location = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Routes>
+      <Route path="/" element={<Payment />} />
+      <Route path="/Payment" element={<Payment />} />
+      <Route path="/PaymentSuccess" element={<PaymentSuccess />} />
+    </Routes>
   );
 }
 
